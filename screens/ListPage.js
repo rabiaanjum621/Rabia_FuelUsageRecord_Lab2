@@ -9,9 +9,9 @@ import {
   NativeModules,
 } from "react-native";
 import Btn from "../components/Btn";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
-import {fuelStore} from "../AsyncStorageFile"
+//import { signOut } from "firebase/auth";
+//import { auth } from "../firebase";
+//import {fuelStore} from "../AsyncStorageFile"
 import { useNavigation } from "@react-navigation/native";
 
 
@@ -28,42 +28,42 @@ const ListPage =(props) =>{
   const [getDeviceId, setDeviceId] = useState("");
     const [getDeviceType, setDeviceType] = useState("");
     const { ReactOneCustomMethod } = NativeModules;
-  const signMeOut = () => {
-    signOut(auth);
-    navigations.navigate("Login");
-  };
+  // const signMeOut = () => {
+  //   signOut(auth);
+  //   navigations.navigate("Login");
+  // };
 
-    useEffect(() => {
-      //fuelStore()   
-      ReactOneCustomMethod.getPhoneID()
-      .then((res: string) => {
-          setDeviceId(res);
-          console.log("Caaling getPhoneID");
-          console.log(res);
-      })
-      .catch((err: any) => {
-          console.error(err);
-      });
+  //   useEffect(() => {
+  //     //fuelStore()   
+  //     ReactOneCustomMethod.getPhoneID()
+  //     .then((res: string) => {
+  //         setDeviceId(res);
+  //         console.log("Caaling getPhoneID");
+  //         console.log(res);
+  //     })
+  //     .catch((err: any) => {
+  //         console.error(err);
+  //     });
 
-  ReactOneCustomMethod.getDeviceType()
-      .then((res: string) => {
-          setDeviceType(res);
-          console.log("Caaling getDeviceType");
+  // ReactOneCustomMethod.getDeviceType()
+  //     .then((res: string) => {
+  //         setDeviceType(res);
+  //         console.log("Caaling getDeviceType");
 
-          console.log(res);
-      })
-      .catch((err: any) => {
-          console.error(err);
-      }); 
-  },[]); 
+  //         console.log(res);
+  //     })
+  //     .catch((err: any) => {
+  //         console.error(err);
+  //     }); 
+  // },[]); 
 
-  const removeItem = (item) => {
-    let updatedList = getFuelList.filter((obj) => obj.id !== item.id)
-        setFuelList(updatedList)
-        let updatedBalance = getBalance + item.price;
-        setBalance(updatedBalance)
-        Alert.alert("Removed successfully")
-}
+//   const removeItem = (item) => {
+//     let updatedList = getFuelList.filter((obj) => obj.id !== item.id)
+//         setFuelList(updatedList)
+//         let updatedBalance = getBalance + item.price;
+//         setBalance(updatedBalance)
+//         Alert.alert("Removed successfully")
+// }
 
   const _renderItem = ({ item }) => {
     return (
@@ -99,9 +99,9 @@ const handleAddFuel = (data) => {
 
   return (
     <View style={styles.view}>
-  <Text style={styles.textHeading}>Device Id: {getDeviceId} </Text>
-  <Text style={styles.textHeading}>Device Type: {getDeviceType} </Text>
-        <Btn title="Create List"
+  <Text style={styles.textHeading}>Device Id: </Text>
+  <Text style={styles.textHeading}>Device Type:  </Text>
+        {/* <Btn title="Create List"
         onClick={() =>  navigations.navigate('CreateList',
         { userMaxAllowance: getBalance, handleAddFuel: handleAddFuel })
   }
@@ -121,7 +121,7 @@ const handleAddFuel = (data) => {
             renderItem={_renderItem}
         />
 
-<Btn title="Log Out" onClick={signMeOut} />
+<Btn title="Log Out" onClick={signMeOut} /> */}
     </View>
 );
 }

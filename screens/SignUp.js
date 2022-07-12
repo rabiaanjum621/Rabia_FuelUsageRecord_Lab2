@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import TextBox from "../components/TextBox";
 import Btn from "../components/Btn";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { ref, set, getDatabase } from "firebase/database";
-import {app, auth} from "../firebase"
+//import { createUserWithEmailAndPassword } from "firebase/auth";
+//import { ref, set, getDatabase } from "firebase/database";
+//import {app, auth} from "../firebase"
 
 const styles = StyleSheet.create({
   view: {
@@ -23,21 +23,21 @@ export default function SignUpScreen({ navigation }) {
     userName: ""
   });
 
-  function insertData() {
-    const { email, userName, gender, location, occupation, phone } = values;
-    const userId = auth.currentUser.uid;
-    const db = getDatabase();
-    set(ref(db, "user/" + userId), {
-      userName: userName,
-      email: email,
-    })
-      .then(() => {
-        alert("sign up successfully");
-      })
-      .catch((error) => {
-        alert("sign up failed " + error);
-      });
-  }
+  // function insertData() {
+  //   const { email, userName } = values;
+  //   const userId = auth.currentUser.uid;
+  //   const db = getDatabase();
+  //   set(ref(db, "user/" + userId), {
+  //     userName: userName,
+  //     email: email,
+  //   })
+  //     .then(() => {
+  //       alert("sign up successfully");
+  //     })
+  //     .catch((error) => {
+  //       alert("sign up failed " + error);
+  //     });
+  // }
 
   function handleChange(text, eventName) {
     setValues((prev) => {
@@ -49,21 +49,22 @@ export default function SignUpScreen({ navigation }) {
   }
 
   function SignUp() {
-    const { email, pwd, pwd2 } = values;
+    //const { email, pwd, pwd2 } = values;
 
-    if (pwd == pwd2) {
-      createUserWithEmailAndPassword(auth, email, pwd)
-        .then(() => { 
-            insertData();
-            navigation.navigate("Login");
-        })
-        .catch((error) => {
-          alert(error.message);
-          // ..
-        });
-    } else {
-      alert("Passwords are different!");
-    }
+    //if (pwd == pwd2) {
+      // createUserWithEmailAndPassword(auth, email, pwd)
+      //   .then(() => { 
+      //       insertData();
+      //       navigation.navigate("Login");
+      //   })
+      //   .catch((error) => {
+      //     alert(error.message);
+      //     // ..
+      //   });
+      console.log("in sign in")
+   // } else {
+     // alert("Passwords are different!");
+ //   }
   }
 
   return (

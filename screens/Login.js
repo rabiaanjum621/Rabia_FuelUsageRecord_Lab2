@@ -3,8 +3,8 @@ import { Text, View, StyleSheet } from "react-native";
 import TextBox from "../components/TextBox";
 import Btn from "../components/Btn";
 import { useNavigation } from "@react-navigation/native";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+//import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+//import { auth } from "../firebase";
 
 const styles = StyleSheet.create({
   view: {
@@ -34,14 +34,15 @@ export default function Loginscreen() {
 
   function Login() {
     const { email, pwd } = values;
-    signInWithEmailAndPassword(auth, email, pwd)
-      .then(() => {
-       navigation.replace("ListPage");
+    // signInWithEmailAndPassword(auth, email, pwd)
+    //   .then(() => {
+    //    navigation.replace("ListPage");
        
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    //   })
+    //   .catch((error) => {
+    //     alert(error.message);
+    //   });
+    console.log("In login page")
   }
 
   return (
